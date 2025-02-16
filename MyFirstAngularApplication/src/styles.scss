@@ -16,8 +16,8 @@ body{
 }
 
 .card {
-    width: double(120px);
-    height: 254px;
+    width: double(190px);
+    height: 354px;
     background: #3405a3;
     border-radius: 15px;
     box-shadow: 1px 5px 60px 0px #100a886b;
@@ -42,7 +42,7 @@ body{
     display: block;
     text-align: center;
     padding-top: 3px;
-    font-size: 2rem;
+    font-size: 0.8rem;
    }
    .img {
     width: 70px;
@@ -65,7 +65,9 @@ body{
     background: #6b64f3;
     color: white;
     font-weight: 600;
-  
+   }
+   .card__click-button_disabled{
+    color: black;
    }
      .card__click-button:hover {
         background-color: $primary-color;
@@ -75,7 +77,7 @@ body{
     @media only screen and (max-width: 900px)  and (max-height: 300px) {
         .card{
             background-color: rgb(6, 7, 78);
-            max-height: 100px;
-            max-width: 150px;
+            max-height: 300px;
+            max-width: 200px;
         }
     }
