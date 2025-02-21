@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-list-input',
+  selector: 'app-list-input', //название компонента
   imports: [],
   templateUrl: './list-input.component.html',
   styleUrl: './list-input.component.scss'
@@ -9,3 +9,5 @@ import { Component } from '@angular/core';
 export class ListInputComponent {
 
 }
+
+//view-model
