@@ -4,7 +4,7 @@
     <div class="left-side">
       <h1>{{ title }}</h1>
       <p></p>
-      <button (click)="changeTitle()" appButtonColor>Change Title</button>
+      <button (click)="changeTitle()" app_button_color>Change Title</button>
       <p></p>
     </div>
   </div>
@@ -13,7 +13,8 @@
     <div class="card__img"></div>
     <span>Person</span>
     <p class="card__job-title">Job Title</p>
-    <button appButtonColor><b class="click-button__text">Click</b></button>
+    <button app_button_color><b class="click-button__text">Click</b></button>
   </div>
+  <app-task-list></app-task-list>
 </main>
 </router-outlet>
