@@ -1,18 +1,21 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TaskListComponent } from './task-list/task-list.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { AppButtonColorDirective } from './app-button-color.directive';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet, 
-    TaskListComponent
-  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
+  imports: [
+    RouterOutlet,    
+    CommonModule,
+    FormsModule,
+    AppButtonColorDirective
+  ],
 })
-
 export class AppComponent {
   title = 'todo-app';
   changeTitle() {

@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { ButtonColorDirective } from './button-color.directive';
+import { AppButtonColorDirective } from './app-button-color.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonColorDirective
+    AppButtonColorDirective
   ],
   imports: [
-    BrowserModule,
+    BrowserModule
   ],
   bootstrap: [AppComponent]
 })

@@ -1,23 +1,20 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appAppButtonColor]'
 })
 export class AppButtonColorDirective {
-  private originalColor: string;
+  @Input('appAppButtonColor') originalColor: string = 'blue';
 
-  constructor(private el: ElementRef) {
-    // Сохраняем начальный цвет кнопки
-    this.originalColor = this.el.nativeElement.style.backgroundColor;
-  }
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   // При наведении меняем цвет кнопки на синий
   @HostListener('mouseenter') onMouseEnter() {
-    this.el.nativeElement.style.backgroundColor = 'blue';
+    this.renderer.setStyle(this.el.nativeElement, 'backgroundColor', this.originalColor);
   }
 
   // При уходе курсора восстанавливаем исходный цвет
   @HostListener('mouseleave') onMouseLeave() {
-    this.el.nativeElement.style.backgroundColor = this.originalColor;
+    this.renderer.removeStyle(this.el.nativeElement, 'backgroundColor');
   }
-}
+  }

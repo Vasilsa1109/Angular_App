@@ -1,10 +1,10 @@
-<router-outlet>
+ <router-outlet>
 <main class="main">
   <div class="content">
     <div class="left-side">
       <h1>{{ title }}</h1>
       <p></p>
-      <button (click)="changeTitle()" app_button_color>Change Title</button>
+      <button (click)="changeTitle()" appAppButtonColor="green">Change Title</button>
       <p></p>
     </div>
   </div>
@@ -13,8 +13,15 @@
     <div class="card__img"></div>
     <span>Person</span>
     <p class="card__job-title">Job Title</p>
-    <button app_button_color><b class="click-button__text">Click</b></button>
+    <button appAppButtonColor="red"><b class="click-button__text">Click</b></button>
+    <button 
+      class="button"
+      appAppButtonColor>
+        Delete 
+    </button>
   </div>
-  <app-task-list></app-task-list>
 </main>
-</router-outlet>
+</router-outlet> 
+
+
+
