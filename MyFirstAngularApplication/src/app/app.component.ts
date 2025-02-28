@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppButtonColorDirective } from './app-button-color.directive';
+import { TodoComponent } from './components/todo/todo.component';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ import { AppButtonColorDirective } from './app-button-color.directive';
     RouterOutlet,    
     CommonModule,
     FormsModule,
-    AppButtonColorDirective
+    AppButtonColorDirective,
+    TodoComponent
   ],
 })
 export class AppComponent {
