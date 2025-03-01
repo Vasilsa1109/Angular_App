@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AppButtonColorDirective } from './app-button-color.directive';
 import { TodoComponent } from './components/todo/todo.component';
+import { TaskListComponent } from './components/task-list/task-list.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ import { TodoComponent } from './components/todo/todo.component';
     CommonModule,
     FormsModule,
     AppButtonColorDirective,
-    TodoComponent
+    TodoComponent,
+    TaskListComponent
   ],
 })
 export class AppComponent {

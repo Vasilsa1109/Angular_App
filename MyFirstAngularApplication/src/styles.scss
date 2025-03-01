@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@use '../src/assets/fonts/fonts.scss';
+
 @mixin  flex-center {
     display: flex;
     justify-content: center;
@@ -55,10 +57,9 @@ body{
     
    }
    
-   .card__click-button {
+   button {
         padding: 8px 25px;
         display: block;
-        margin: auto;
         border-radius: 8px;
         border: none;
         margin-top: 30px;
@@ -69,12 +70,11 @@ body{
             color: black;
         }
         &:hover {
-            background-color: $primary-color;
+            background-color: #7762a7;
             color: #3405a3;
         }
    }
   
-   
  
     @media only screen and (max-width: 900px)  and (max-height: 300px) {
         .card{

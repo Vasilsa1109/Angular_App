@@ -1,5 +1,15 @@
 <h3>Todo List (using service)</h3>
-<div *ngIf="loading"> Loading... </div>
+<div *ngIf="loading">
+    <h3>Loading...</h3>
+    <div class="loader">
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__bar"></div>
+      <div class="loader__ball"></div>
+    </div>
+</div>
 <div *ngIf="error"> {{error}}</div>
 
 <ul *ngIf="!loading && !error">
@@ -7,4 +17,13 @@
         <input type="checkbox" [checked]="todo.completed" />
          {{todo.title}}
     </li>
+    <h3>Loading animation:</h3>
+    <div class="loader">
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__bar"></div>
+        <div class="loader__ball"></div>
+      </div>
 </ul>
