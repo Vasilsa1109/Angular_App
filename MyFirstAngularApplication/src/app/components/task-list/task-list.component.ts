@@ -1,5 +1,5 @@
 // src/app/task-list/task-list.component.ts
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +12,7 @@ export interface Task {
 
 @Component({
   selector: 'app-task-list',
+  standalone: true,
   imports: [NgFor, CommonModule, FormsModule, TaskInputComponent],
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss']
@@ -30,4 +31,6 @@ export class TaskListComponent {
   removeTask(index: number) {
     this.tasks.splice(index, 1);
   }
+
+  @Input() title = 'My tasks';
 }

@@ -1,7 +1,8 @@
 import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[appAppButtonColor]'
+  selector: '[appAppButtonColor]',
+  standalone: true
 })
 export class AppButtonColorDirective {
   @Input('appAppButtonColor') originalColor: string = 'blue';

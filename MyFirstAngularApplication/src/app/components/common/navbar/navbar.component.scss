@@ -1,0 +1,23 @@
+@use '../../../../assets/mixins.scss' as *;
+
+.navbar{
+    background-color: mediumslateblue;
+    padding: 30px;
+    border-radius: 5px;
+    font-size: 32px;
+    &__list {
+        @include flex-center;
+        gap: 2rem;
+    }
+    &__item{
+        list-style: none;
+        font-family: 'MyFont';
+        a{
+            color: gainsboro;
+        }
+    }
+    &:hover{
+        border-color: rgb(145, 125, 255);
+        border: 3px solid;
+    }   
+}

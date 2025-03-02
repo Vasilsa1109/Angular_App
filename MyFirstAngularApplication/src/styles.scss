@@ -1,16 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @use '../src/assets/fonts/fonts.scss';
-
-@mixin  flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+@use '../src/assets/mixins.scss' as *;
 
 @function double($number){
     @return $number * 2;
 }
-
 
 $primary-color: #cbdcf8;
 body{

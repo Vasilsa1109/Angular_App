@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-task-input',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './task-input.component.html',
   styleUrls: ['./task-input.component.scss']
