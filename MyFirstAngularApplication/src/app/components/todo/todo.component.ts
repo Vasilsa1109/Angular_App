@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TodoService, Todo } from '../../services/todo.service';
 import { NgFor, NgIf } from '@angular/common';
+import { Router } from 'express';
 @Component({
   selector: 'app-todo',
   standalone: true,
@@ -8,12 +9,15 @@ import { NgFor, NgIf } from '@angular/common';
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })
+
 export class TodoComponent implements OnInit {
   todos: Todo[] = [];
   loading = true;
   error = '';
 //монтирование компонента - implements OnInit 
   constructor(private todoService: TodoService) {}
+
+
   ngOnInit(){
     this.todoService.getTodos().subscribe({
       next: (data) => { 
@@ -25,8 +29,12 @@ export class TodoComponent implements OnInit {
         this.error = 'Ошибка загрузки данных';
         this.loading = false;
       },
-    });
+    });     
   }
+  
+  //  goToDetail(id: number){
+  //   this.router.navigate([])
+  // } 
 }
 
 

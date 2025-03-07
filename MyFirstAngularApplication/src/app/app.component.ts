@@ -6,6 +6,7 @@ import { AppButtonColorDirective } from './app-button-color.directive';
 import { TodoComponent } from './components/todo/todo.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { NavbarComponent } from './components/common/navbar/navbar.component';
+import { TaskInputComponent } from './components/task-input/task-input.component';
 // import { ApiService } from './api.service';
 
 @Component({
@@ -21,6 +22,7 @@ import { NavbarComponent } from './components/common/navbar/navbar.component';
     AppButtonColorDirective,
     TodoComponent,
     TaskListComponent,
+    TaskInputComponent,
     NavbarComponent
   ],
 })
