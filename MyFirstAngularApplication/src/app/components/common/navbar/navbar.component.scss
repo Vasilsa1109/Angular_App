@@ -1,6 +1,7 @@
 @use '../../../../assets/mixins.scss' as *;
 
 .navbar{
+    margin: 0;
     background-color: mediumslateblue;
     padding: 30px;
     border-radius: 5px;
