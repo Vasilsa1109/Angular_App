@@ -19,7 +19,7 @@ export class TodoComponent implements OnInit {
 
 
   ngOnInit(){
-    this.todoService.getTodos().subscribe({
+    this.todoService.getTodos().subscribe({ //loadTodos
       next: (data) => { 
         this.todos = data.slice(0, 10); //ограничиваем вывод в 10 штук 
         this.loading = false;

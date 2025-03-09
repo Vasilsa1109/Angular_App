@@ -11,10 +11,12 @@ import { RouterLink } from '@angular/router';
 export class TodoDetailComponent {
 
   todoId: number | null = null;
+  todoTitle: string | null = null;
 
   constructor(private route: ActivatedRoute){
     this.route.paramMap.subscribe(params => {
       this.todoId = Number(params.get('id'));
+      this.todoTitle = String(params.get('title'));
     })
   }
 }
