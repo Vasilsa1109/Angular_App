@@ -1,0 +1,37 @@
+<form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+    <div>
+        <label for="name">Name</label>
+        <input   id="name" formControlName="name">
+        <div *ngIf="registerForm.controls.name.invalid && registerForm.controlls.name.touched">
+            <small *ngIf="registerForm.controls.name.errors?.required">Name is required</small>
+            <small *ngIf="registerForm.controls.name.errors?.minlength">Min length is 3 symbols</small>
+        </div>
+    </div>
+
+    <div>
+        <label for="name">Email</label>
+        <input   id="email" formControlName="email">
+        <div *ngIf="registerForm.controls.email.invalid && registerForm.controlls.email.touched">
+            <small *ngIf="registerForm.controls.email.errors?.required">Email is required</small>
+            <small *ngIf="registerForm.controls.email.errors?.email">Enter the correct email</small>
+        </div>
+    </div>
+
+    <div>
+        <label for="password">Password</label>
+        <input type="password"  id="password" formControlName="password">
+        <div *ngIf="registerForm.controls.password.invalid && registerForm.controlls.password.touched">
+            <small *ngIf="registerForm.controls.password.errors?.required">Password is required</small>
+            <small *ngIf="registerForm.controls.password.errors?.minlength">Min length is 8 symbols</small>
+        </div>
+    </div>
+
+    <div>
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password"  id="confirmPassword" formControlName="confirmPassword">
+        <div *ngIf="registerForm.errors?.mismatch && registerForm.controlls.confirmPassword.touched">
+            <small>Passwords don't match</small>
+        </div>
+    </div>
+    <button type="submit" [disabled]="registerForm.invalid">Registrate</button>
+</form>
