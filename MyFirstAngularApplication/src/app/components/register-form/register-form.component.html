@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+<form [formGroup]="registerForm" (ngSubmit)="submitForm()" class="form">
     <div>
         <label for="name">Name</label>
         <input   id="name" formControlName="name">
@@ -14,6 +14,7 @@
         <div *ngIf="registerForm.controls.email.invalid && registerForm.controlls.email.touched">
             <small *ngIf="registerForm.controls.email.errors?.required">Email is required</small>
             <small *ngIf="registerForm.controls.email.errors?.email">Enter the correct email</small>
+            <small *ngIf="registerForm.controls.email.errors?.emailTaken">This email has already used</small>
         </div>
     </div>
 
@@ -29,9 +30,11 @@
     <div>
         <label for="confirmPassword">Confirm Password</label>
         <input type="password"  id="confirmPassword" formControlName="confirmPassword">
-        <div *ngIf="registerForm.errors?.mismatch && registerForm.controlls.confirmPassword.touched">
+        <div *ngIf="registerForm.errors?.mismatch && registerForm.controls.confirmPassword.touched">
             <small>Passwords don't match</small>
         </div>
     </div>
+    
     <button type="submit" [disabled]="registerForm.invalid">Registrate</button>
 </form>
+

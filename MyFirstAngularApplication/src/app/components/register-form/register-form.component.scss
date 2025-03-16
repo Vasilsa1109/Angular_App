@@ -1,0 +1,16 @@
+@use '../../../assets/mixins.scss' as *;
+.form{
+    background-color: rgb(122, 80, 144);
+    font-family: 'MyFont2'; 
+    @include flex-center;
+    flex-direction: column; 
+    color: aliceblue;
+    input{
+        color: rgb(56, 20, 51);
+        outline: none;
+        @include flex-center;
+    }  
+}
+div{
+    padding: 20px;
+}

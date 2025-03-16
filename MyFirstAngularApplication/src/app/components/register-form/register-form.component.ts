@@ -1,10 +1,10 @@
+// import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-
 @Component({
   selector: 'app-register-form',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule ], //NgIf
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.scss'
 })
@@ -16,14 +16,13 @@ export class RegisterFormComponent {
     this.registerForm = this.fb.group({
       name: ['standartName', [Validators.required, Validators.minLength(3)]],
       email: ['standartEmail', [Validators.required, Validators.minLength(5), Validators.email]],
-      password: ['standartPaassword',[
+      password: ['standartPassword',[
         Validators.required, 
-        Validators.email,
         Validators.minLength(8)
         // Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')
         ]
       ],
-      confirmPassword: ['standartConfirmPaassword', Validators.required]
+      confirmPassword: ['standartConfirmPassword', Validators.required]
     })
  } //  ,{ validators: this.passwordMatchValidator }
 
