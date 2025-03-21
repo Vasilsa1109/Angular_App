@@ -1,40 +1,38 @@
-<form [formGroup]="registerForm" (ngSubmit)="submitForm()" class="form">
+<form [formGroup]="registerForm" (ngSubmit)="submitForm()">
     <div>
-        <label for="name">Name</label>
-        <input   id="name" formControlName="name">
-        <div *ngIf="registerForm.controls.name.invalid && registerForm.controlls.name.touched">
-            <small *ngIf="registerForm.controls.name.errors?.required">Name is required</small>
-            <small *ngIf="registerForm.controls.name.errors?.minlength">Min length is 3 symbols</small>
-        </div>
+      <label for="name">Имя:</label>
+      <input id="name" formControlName="name">
+      <div *ngIf="registerForm.controls.name.invalid && registerForm.controls.name.touched">
+        <small *ngIf="registerForm.controls.name.errors?.['required']">Имя обязательно</small>
+        <small *ngIf="registerForm.controls.name.errors?.['minlength']">Минимальная длина - 3 символа</small>
+      </div>
     </div>
-
+  
     <div>
-        <label for="name">Email</label>
-        <input   id="email" formControlName="email">
-        <div *ngIf="registerForm.controls.email.invalid && registerForm.controlls.email.touched">
-            <small *ngIf="registerForm.controls.email.errors?.required">Email is required</small>
-            <small *ngIf="registerForm.controls.email.errors?.email">Enter the correct email</small>
-            <small *ngIf="registerForm.controls.email.errors?.emailTaken">This email has already used</small>
-        </div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email">
+      <div *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched">
+        <small *ngIf="registerForm.controls.email.errors?.['required']">Email обязателен</small>
+        <small *ngIf="registerForm.controls.email.errors?.['email']">Введите корректный email</small>
+      </div>
     </div>
-
+  
     <div>
-        <label for="password">Password</label>
-        <input type="password"  id="password" formControlName="password">
-        <div *ngIf="registerForm.controls.password.invalid && registerForm.controlls.password.touched">
-            <small *ngIf="registerForm.controls.password.errors?.required">Password is required</small>
-            <small *ngIf="registerForm.controls.password.errors?.minlength">Min length is 8 symbols</small>
-        </div>
+      <label for="password">Пароль:</label>
+      <input type="password" id="password" formControlName="password">
+      <div *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched">
+        <small *ngIf="registerForm.controls.password.errors?.['required']">Пароль обязателен</small>
+        <small *ngIf="registerForm.controls.password.errors?.['minlength']">Минимальная длина - 6 символов</small>
+      </div>
     </div>
-
+  
     <div>
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password"  id="confirmPassword" formControlName="confirmPassword">
-        <div *ngIf="registerForm.errors?.mismatch && registerForm.controls.confirmPassword.touched">
-            <small>Passwords don't match</small>
-        </div>
+      <label for="confirmPassword">Подтвердите пароль:</label>
+      <input type="password" id="confirmPassword" formControlName="confirmPassword">
+      <div *ngIf="registerForm.errors?.['mismatch'] && registerForm.controls.confirmPassword.touched">
+        <small>Пароли не совпадают</small>
+      </div>
     </div>
-    
-    <button type="submit" [disabled]="registerForm.invalid">Registrate</button>
-</form>
-
+  
+    <button type="submit" [disabled]="registerForm.invalid">Зарегистрироваться</button>
+  </form>

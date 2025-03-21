@@ -1,10 +1,18 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[appColors]'
+  selector: '[appColors]',
+  standalone: true
 })
 export class ColorsDirective {
 
-  constructor() { }
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-}
+  @HostListener('mouseenter') onMouseEnter() {
+    this.renderer.setStyle(this.el.nativeElement, 'color', 'white');
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.renderer.removeStyle(this.el.nativeElement, 'color');
+  }
+  }

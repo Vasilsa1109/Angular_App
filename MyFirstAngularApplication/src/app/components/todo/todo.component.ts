@@ -1,42 +1,47 @@
-import { Component,  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoService, Todo } from '../../services/todo.service';
 import { NgFor, NgIf } from '@angular/common';
-import { TaskFormComponent } from '../task-form/task-form.component';
 import { StatusPipe } from '../../pipes/status.pipe';
+import { TaskForm, TaskFormComponent } from '../task-form/task-form.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-todo',
   standalone: true,
-  imports: [NgFor, NgIf, TaskFormComponent, StatusPipe],
+  imports: [NgFor, NgIf, StatusPipe, TaskFormComponent, RouterModule],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })
 
-export class TodoComponent implements OnInit {
+export class TodoComponent implements OnInit{
   todos: Todo[] = [];
   loading = true;
   error = '';
-//монтирование компонента - implements OnInit 
+
   constructor(private todoService: TodoService) {}
 
-
-  ngOnInit(){
-    this.todoService.getTodos().subscribe({ //loadTodos
-      next: (data) => { 
-        this.todos = data.slice(0, 20); //ограничиваем вывод в 10 штук 
+  ngOnInit() {
+    this.todoService.getTodos().subscribe({
+      next: (data) => {
+        this.todos = data.slice(0, 10);
         this.loading = false;
       },
-
-      error: (err) => { //обработка ошибок
+      error: (err) => {
         this.error = 'Ошибка загрузки данных';
         this.loading = false;
       },
-    });     
+    });
   }
-  
-  //  goToDetail(id: number){
-  //   this.router.navigate([])
-  // } 
+
+  toggleTodo(todo: Todo) {
+    this.todos = this.todos.map(t => 
+      t === todo ? { ...t, completed: !t.completed } : t
+    );
+  }
+
+  addTask(task: TaskForm) { 
+    const newTodo = { id: Date.now(), ...task };
+    this.todos.push(newTodo);
+    this.todoService.addTodo(newTodo).subscribe();
+  }
 }
-
-

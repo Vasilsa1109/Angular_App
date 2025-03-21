@@ -1,45 +1,51 @@
-// import { NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
+//Добавляем интерфейс для описания типов полей в нашей форме
+//FormControl - тип поля
+interface RegisterForm {
+  name: FormControl<string>,
+  email: FormControl<string>,
+  password: FormControl<string>,
+  confirmPassword: FormControl<string>
+}
+
 @Component({
   selector: 'app-register-form',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule ], //NgIf
+  imports: [NgIf, ReactiveFormsModule],
   templateUrl: './register-form.component.html',
-  styleUrl: './register-form.component.scss'
+  styleUrls: ['./register-form.component.scss']
 })
 
 export class RegisterFormComponent {
-  registerForm: FormGroup;
+  registerForm: FormGroup<RegisterForm>;
 
   constructor(private fb: FormBuilder) {
-    this.registerForm = this.fb.group({
-      name: ['standartName', [Validators.required, Validators.minLength(3)]],
-      email: ['standartEmail', [Validators.required, Validators.minLength(5), Validators.email]],
-      password: ['standartPassword',[
-        Validators.required, 
-        Validators.minLength(8)
-        // Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')
-        ]
-      ],
-      confirmPassword: ['standartConfirmPassword', Validators.required]
-    })
- } //  ,{ validators: this.passwordMatchValidator }
 
-passwordMatchValidator(form: FormGroup) {
-    const password = form.get('password')?.value; //проверяем, есть ли поле password
-    const confirmPassword = form.get('confirmPassword')?.value;
-    return password === confirmPassword ? null : {mismatch: true}; //строгое равенство
+    this.registerForm = this.fb.group(
+      {
+        name: ['', [Validators.required, Validators.minLength(3)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', [Validators.required]]
+      },
+      { validators: this.passwordMatchValidator }
+    );
   }
+  
+  passwordMatchValidator(form: FormGroup) {
+    const password = form.get('password')?.value;
+    const confirmPassword = form.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { mismatch: true };
+  }
+
   submitForm() {
-    if(this.registerForm.valid){
-      console.log('Форма отправлена', this.registerForm.value);
-    }
-    else{
-      console.error('Форма содержит ошибки');
+    if (this.registerForm.valid) {
+      console.log('Форма отправлена!', this.registerForm.value);
+    } else {
+      console.log('Форма содержит ошибки');
     }
   }
 }
-
-
-

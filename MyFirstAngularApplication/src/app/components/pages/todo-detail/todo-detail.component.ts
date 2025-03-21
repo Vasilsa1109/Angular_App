@@ -1,22 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RouterLink } from '@angular/router';
+import { Todo, TodoService } from '../../../services/todo.service';
+import { StatusPipe } from '../../../pipes/status.pipe';
+import { NgIf } from '@angular/common';
+
 @Component({
   selector: 'app-todo-detail',
   standalone: true,
-  imports: [RouterLink],
+  imports: [StatusPipe, NgIf],
   templateUrl: './todo-detail.component.html',
-  styleUrl: './todo-detail.component.scss'
+  styleUrls: ['./todo-detail.component.scss']
 })
-export class TodoDetailComponent {
 
-  todoId: number | null = null;
-  todoTitle: string | null = null;
+export class TodoDetailComponent implements OnInit {
+  todo: Todo | null = null;
+  error: string | null = null;
 
-  constructor(private route: ActivatedRoute){
-    this.route.paramMap.subscribe(params => {
-      this.todoId = Number(params.get('id'));
-      this.todoTitle = String(params.get('title'));
-    })
-  }
+  constructor(private route: ActivatedRoute,
+    private todoService: TodoService) {}
+
+    ngOnInit(): void {
+      const todoId = Number(this.route.snapshot.paramMap.get('id')); // Получаем ID из URL
+  
+      this.todoService.getTodoById(todoId).subscribe({
+        next: (data) => {
+          this.todo = data;
+        },
+        error: (err) => {
+          this.error = 'Ошибка загрузки данных';
+        }
+      });
+    }
 }

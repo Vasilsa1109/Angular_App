@@ -1,5 +1,10 @@
-<div class="task-myForm">
-    <h3>task-from</h3>
-    <input type="checkbox"  placeholder="Enter a new task">Default title
-    <button appAppButtonColor>Add task</button>
-</div>
+<h3>Task - form </h3>
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="title" placeholder="Введите задачу" />
+    <input type="checkbox" formControlName="completed" />
+    <button type="submit" [disabled]="taskForm.invalid">Добавить</button>
+  
+    <p *ngIf="taskForm.controls.title.invalid && taskForm.controls.title.touched">
+      Название задачи должно быть не менее 5 символов.
+    </p>
+</form>

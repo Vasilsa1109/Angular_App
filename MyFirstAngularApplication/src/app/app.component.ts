@@ -8,6 +8,7 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 import { NavbarComponent } from './components/common/navbar/navbar.component';
 import { TaskInputComponent } from './components/task-input/task-input.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { ColorsDirective } from './directives/colors.directive';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     CommonModule,
     FormsModule,
     AppButtonColorDirective,
+    ColorsDirective,
     TodoComponent,
     TaskListComponent,
     TaskInputComponent,

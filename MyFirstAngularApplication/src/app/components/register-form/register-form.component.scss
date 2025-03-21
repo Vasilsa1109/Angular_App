@@ -1,5 +1,5 @@
 @use '../../../assets/mixins.scss' as *;
-.form{
+form{
     background-color: rgb(122, 80, 144);
     font-family: 'MyFont2'; 
     @include flex-center;
@@ -11,6 +11,6 @@
         @include flex-center;
     }  
 }
-div{
+div, form{
     padding: 20px;
 }

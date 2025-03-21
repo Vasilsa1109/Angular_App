@@ -1,30 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
-export interface Task {
-  id: number;
-  title: string;
+export interface TaskForm {
+  title: string,
+  completed: boolean
 }
 
 @Component({
   selector: 'app-task-form',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './task-form.component.html',
-  styleUrl: './task-form.component.scss'
+  styleUrls: ['./task-form.component.scss']
 })
-
 export class TaskFormComponent {
-  tasks: Task[] = [];
-  nextId: number = 0; 
-  newTask: string = '';
+  @Output() addTask = new EventEmitter<TaskForm>();
 
-  addTask(taskTitle: string) {
-    if (taskTitle) {
-      const newTask: Task = { id: this.nextId++, title: taskTitle + ` - task ${this.nextId}`  };
-      this.tasks.push(newTask);
+  taskForm: FormGroup<{ title: FormControl<string>; completed: FormControl<boolean> }> = new FormGroup({
+    title: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(5)] }),
+    completed: new FormControl(false, { nonNullable: true })
+  });
+
+  onSubmit() {
+    if (this.taskForm.valid) {
+      this.addTask.emit(this.taskForm.getRawValue());
+      this.taskForm.reset({ title: '', completed: false });
     }
-  }
-
-  removeTask(index: number) {
-    this.tasks.splice(index, 1);
   }
 }
