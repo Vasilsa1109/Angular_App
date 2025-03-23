@@ -9,7 +9,7 @@ export class ColorsDirective {
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.renderer.setStyle(this.el.nativeElement, 'color', 'white');
+    this.renderer.setStyle(this.el.nativeElement, 'color', 'purple');
   }
 
   @HostListener('mouseleave') onMouseLeave() {

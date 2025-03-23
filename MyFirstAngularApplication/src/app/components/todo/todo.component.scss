@@ -1,6 +1,31 @@
-.todo-list{
-	padding-left: 20px;
+@use '../../../assets/mixins.scss' as *;
+h3{
+	text-align: center;
 }
+.todo-list{
+	background-color: #bbb9e1;
+	padding: 20px;
+	a{
+		text-decoration: none;
+		color: black;
+		font-size: medium;
+		font-family: 'MyFont2';
+	}
+	ul{
+		list-style-type: none;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		gap: 30px;
+	}
+	i{
+		font-size: 24px;
+		color:rgb(118, 209, 239);
+		text-shadow:2px 2px 4px #000000;
+		margin-right: 30px;
+	}
+}
+
 // input{
 //   appearance: none;
 //   position: relative;

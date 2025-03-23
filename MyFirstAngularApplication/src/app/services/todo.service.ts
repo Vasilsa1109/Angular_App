@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-export interface Todo{
-  userId: number;
+export interface Todo {
+  userId?: number;
   id: number;
   title: string;
-  completed: true;
+  completed: boolean;
 }
 
 @Injectable({
@@ -14,31 +14,33 @@ export interface Todo{
 })
 
 export class TodoService {
-
-  private apiUrl = 'https://jsonplaceholder.typicode.com/todos'
+  private apiUrl = 'https://jsonplaceholder.typicode.com/todos';
 
   constructor(private http: HttpClient) { }
 
+
+  // Получение списка задач
   getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.apiUrl); 
+    return this.http.get<Todo[]>(this.apiUrl);
   }
-  //Observable<Todo[]> - нужен для получения асинхронно, как промис 
 
+  // Получение одной задачи по ID
   getTodoById(id: number): Observable<Todo> {
-    return this.http.get<Todo>(`${this.apiUrl}/$id`);
-  } 
-  //получение задачи по айди
+    return this.http.get<Todo>(`${this.apiUrl}/${id}`);
+  }
 
+  // Добавление новой задачи
   addTodo(todo: Partial<Todo>): Observable<Todo> {
     return this.http.post<Todo>(this.apiUrl, todo);
   }
-  
+
+  // Обновление задачи
   updateTodo(todo: Todo): Observable<Todo> {
     return this.http.put<Todo>(`${this.apiUrl}/${todo.id}`, todo);
   }
 
-  deleteTodo(id: number): Observable<void>{
+  // Удаление задачи
+  deleteTodo(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
-  } //метод типа void
+  }
 }
-

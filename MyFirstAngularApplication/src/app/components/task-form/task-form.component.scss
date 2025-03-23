@@ -1,3 +1,11 @@
-.task-myForm{
-   padding: 30px;
+
+form{
+   background-color: rgb(36, 37, 89);
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   max-width: 900px;
 }
+ h3{
+      text-align: center;
+   }
