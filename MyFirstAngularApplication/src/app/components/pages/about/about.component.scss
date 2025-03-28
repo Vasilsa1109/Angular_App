@@ -1,0 +1,76 @@
+$background-color_1: #abc7b8;
+$background-color_2: #f8c6cf;
+$background-color_3: #455681;
+$background-color_4: #fffeff;
+
+@keyframes firstball {
+	0% {
+		transform: rotate(45deg);
+	}
+	50% {
+		transform: rotate(0deg);
+	}
+}
+@keyframes secondball {
+	0% {
+		transform: rotate(20deg);
+	}
+	50% {
+		transform: rotate(-20deg);
+	}
+}
+@keyframes lastball {
+	50% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(-45deg);
+	}
+}
+body {
+	background-color: $background-color_1;
+}
+.pendulum {
+	position: absolute;
+	width: 220px;
+	height: 180px;
+	background-color: $background-color_2;
+	top: 50%;
+	left: 50%;
+	border-radius: 5%;
+	align-items: center;
+	border-top: 15px solid #eee7d5;
+	transform: translate(-50%, -50%);
+}
+.pendulum_box {
+	display: flex;
+	padding: 120px 0 0 10px;
+	position: absolute;
+	flex: 1;
+}
+.ball {
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	background-color: $background-color_3;
+	position: relative;
+	transform-origin: 50% -300%;
+	&::before {
+		content: '';
+		width: 2px;
+		height: 120px;
+		background-color: $background-color_4;
+		left: 18px;
+		top: -120px;
+		position: absolute;
+	}
+}
+.ball.first {
+	animation: firstball .9s alternate ease-in infinite;
+}
+.ball.last {
+	animation: lastball .9s alternate ease-out infinite;
+}
+.ball.second {
+    animation: secondball .9s alternate ease-out infinite;  
+}
